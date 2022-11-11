@@ -6,7 +6,9 @@ const printerRoute = require("./printer")
 const app = express()
 app.use(bodyParser.json());
 
-
+app.use(cors({
+    origin: '*'
+}));
 app.use("/print", printerRoute);
 
 app.listen(3000, () => {
