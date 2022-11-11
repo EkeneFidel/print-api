@@ -26,6 +26,12 @@ printerRoute.post("/", (req, res) => {
 
     const printer = new escpos.Printer(device, options);
 
+    const itemValue = []
+    for (item, amt of params.items){
+      itemValue.push({ text: item, align:"LEFT", width:0.33, style: 'B'})
+      itemValue.push({ text: amt, align:"RIGHT", width:0.33, style: 'B'})
+    }
+
     device.open(function(error){
       printer
       .font('a')
