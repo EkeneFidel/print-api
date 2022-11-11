@@ -1,7 +1,11 @@
 const express = require('express')
+const bodyParser = require("body-parser");
+
 const printerRoute = require("./printer")
 
 const app = express()
+app.use(bodyParser.json());
+
 
 app.use("/print", printerRoute);
 
