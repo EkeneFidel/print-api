@@ -61,8 +61,10 @@ printerRoute.post("/", (req, res) => {
                         .replace(/\..+/, "")
                 )
                 .tableCustom(itemValue)
-                .cut()
-                .close();
+                .qrimage("https://oyasync.app", function (err) {
+                    this.cut();
+                    this.close();
+                });
         });
         res.status(200).send("Printed kot");
     } catch (error) {
